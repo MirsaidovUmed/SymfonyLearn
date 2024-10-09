@@ -14,14 +14,15 @@ class MainController extends AbstractController
         $count = 1;
 
         $someInfo = [
-            "name" => "Umed",
-            "surname" => "Mirsaidov",
-            "age" => "20",
-            "email" => "some-email",
+            'name' => 'Umed',
+            'surname' => 'Mirsaidov',
+            'age' => '20',
+            'email' => 'some-email',
         ];
+
         return $this->render('main/homepage.html.twig', [
-            "count" => $count,
-            "someInfo" => $someInfo,
+            'count' => $count,
+            'someInfo' => $someInfo,
         ]);
     }
 }
