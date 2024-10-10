@@ -3,15 +3,21 @@
 namespace App\Controller;
 
 use App\Model\Starship;
+use App\Repository\StarshipRepository;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+#[Route('/api/starships')]
 class StarshipApiController extends AbstractController
 {
-    #[Route('/api/starships')]
-    public function getCollection(): Response
+    #[Route('', methods:['GET'])]
+    public function getCollection(LoggerInterface $logger, StarshipRepository $repository): Response
     {
+        // dd($logger);
+        $logger->info('Starship collection retrieved');
+        dd($repository);
         $starships = [
             new Starship(
                 1,
@@ -37,5 +43,18 @@ class StarshipApiController extends AbstractController
         ];
 
         return $this->json($starships);
+    }
+
+    #[Route('/{id<\d+>}', methods:['GET'])]
+    public function get(int $id, StarshipRepository $repository): Response
+    {
+        // dd($id);
+        $starship = $repository->find($id);
+
+        if (!$starship){
+            throw $this->createNotFoundException('Starship not found');
+        }
+        
+        return $this->json($starship);
     }
 }
