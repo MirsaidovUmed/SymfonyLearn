@@ -1,6 +1,8 @@
 # Symfony Project
 
-![Symfony Logo](https://symfony.com/logos/symfony_black_02.svg)
+<p align="center">
+  <img src="https://symfony.com/logos/symfony_black_02.svg" alt="Symfony Logo"/>
+</p>
 
 Welcome to my Symfony project! I am currently studying Symfony through [SymfonyCasts](https://symfonycasts.com/), exploring the framework's features and best practices.
 
